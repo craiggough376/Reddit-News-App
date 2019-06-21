@@ -1,13 +1,19 @@
 <template lang="html">
   <div>
-    <li v-for="article in articles">{{ article.data.title }}</li>
+    <ul>
+      <list-item v-for="article in articles" :article="article">{{ article.data.title }}</list-item>
+    </ul>
   </div>
 </template>
 
 <script>
+import ListItem from './ListItem.vue'
 export default {
   name: "articles-list",
-  props: ['articles']
+  props: ['articles'],
+  components: {
+    "list-item": ListItem
+  }
 }
 </script>
 

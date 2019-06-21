@@ -2,26 +2,34 @@
   <div id="app">
 <h1>Reddit</h1>
   <articles-list :articles="articles"></articles-list>
+  <article-detail :article="selectedArticle"></article-detail>
   </div>
 </template>
 
 <script>
+import { eventBus } from './main.js'
 import ArticlesList from './components/ArticlesList.vue'
+import ArticleDetail from './components/ArticleDetail.vue'
 
 export default {
   name: 'app',
   data(){
     return{
-      articles: null
+      articles: null,
+      selectedArticle: null
     }
   },
   mounted(){
     fetch('https://www.reddit.com/r/worldnews.json')
     .then(response => response.json())
     .then(articles => this.articles = articles.data.children)
+    eventBus.$on('article-selected', (article) => {
+      this.selectedArticle = article;
+    })
   },
   components: {
-    'articles-list': ArticlesList
+    'articles-list': ArticlesList,
+    'article-detail': ArticleDetail
   }
 }
 
@@ -35,5 +43,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  display: grid;
+  grid-template-columns: 50vw auto;
 }
 </style>

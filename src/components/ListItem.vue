@@ -1,11 +1,21 @@
 <template lang="html">
-  <li>{{ article.data.title }}</li>
+  <div class="">
+    <li v-on:click="handleClick">{{ article.data.title }}</li>
+    <button>Bookmark</button>
+  </div>
 </template>
 
 <script>
+import { eventBus } from '../main.js'
 export default {
   name: 'list-item',
-  props: ['article']
+  props: ['article'],
+  methods: {
+    handleClick(){
+      eventBus.$emit('article-selected', this.article)
+    }
+  }
+
 }
 </script>
 
