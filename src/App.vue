@@ -2,7 +2,7 @@
   <div id="app">
 <h1>Reddit</h1>
   <articles-list :articles="articles"></articles-list>
-  <article-detail :article="selectedArticle"></article-detail>
+  <!-- <article-detail :article="selectedArticle"></article-detail> -->
   </div>
 </template>
 
@@ -20,7 +20,7 @@ export default {
     }
   },
   mounted(){
-    fetch('https://www.reddit.com/r/worldnews.json')
+    fetch('https://www.reddit.com/r/UpliftingNews.json')
     .then(response => response.json())
     .then(articles => this.articles = articles.data.children)
     eventBus.$on('article-selected', (article) => {
@@ -43,7 +43,5 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-  display: grid;
-  grid-template-columns: 50vw auto;
 }
 </style>
