@@ -1,19 +1,30 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+<h1>Reddit</h1>
+  <articles-list :articles="articles"></articles-list>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ArticlesList from './components/ArticlesList.vue'
 
 export default {
   name: 'app',
+  data(){
+    return{
+      articles: null
+    }
+  },
+  mounted(){
+    fetch('https://www.reddit.com/r/worldnews.json')
+    .then(response => response.json())
+    .then(articles => this.articles = articles.data.children)
+  },
   components: {
-    HelloWorld
+    'articles-list': ArticlesList
   }
 }
+
 </script>
 
 <style>
