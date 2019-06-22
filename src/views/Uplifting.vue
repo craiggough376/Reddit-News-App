@@ -1,6 +1,7 @@
 <template lang="html">
   <div>
     <p>Uplifting News</p>
+    <button v-on:click="sortByUpvotes">Sort by Most Upvoted</button>
     <articles-list :articles="upliftingArticles"></articles-list>
   </div>
 </template>
@@ -12,6 +13,11 @@ export default {
   props: ['upliftingArticles'],
   components: {
     'articles-list': ArticlesList
+  },
+  methods: {
+    sortByUpvotes: function(){
+      this.upliftingArticles.sort((a, b) => parseFloat(b.data.score) - parseFloat(a.data.score));
+    }
   }
 }
 </script>

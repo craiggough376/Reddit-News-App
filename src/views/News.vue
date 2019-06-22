@@ -1,6 +1,7 @@
 <template lang="html">
   <div>
-    <p>News</p>
+    <p>Reddit UK News</p>
+    <button v-on:click="sortByUpvotes">Sort by Most Upvoted</button>
     <articles-list :articles="articles"></articles-list>
   </div>
 </template>
@@ -12,6 +13,11 @@ export default {
   props: ['articles'],
   components: {
     'articles-list': ArticlesList
+  },
+  methods: {
+    sortByUpvotes: function(){
+      this.articles.sort((a, b) => parseFloat(b.data.score) - parseFloat(a.data.score));
+    }
   }
 }
 </script>

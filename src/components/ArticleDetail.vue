@@ -5,7 +5,6 @@
     <button v-if="article.data.url !==`https://www.reddit.com${article.data.permalink}`">
       <a :href="article.data.url" target="_blank">Go To {{ article.data.domain}} Article</a>
     </button>
-    <h3>Upvotes: {{ article.data.score}}</h3>
     <!-- <iframe :src="`https://www.reddit.com${article.data.permalink}`" height="600" width="500"></iframe> -->
   </div>
 </template>

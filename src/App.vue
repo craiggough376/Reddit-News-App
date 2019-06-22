@@ -1,12 +1,14 @@
 <template>
   <div id="app">
 <h1>Reddit</h1>
+<h2 v-if="countBookmarked === 1">You have {{ countBookmarked }} bookmarked article</h2>
+<h2 v-if="countBookmarked > 1">You have {{ countBookmarked }} bookmarked articles</h2>
   <nav>
     <router-link :to="{ name: 'news'}">News</router-link>
     <router-link :to="{ name: 'uplifting'}">Uplifting News</router-link>
     <router-link :to="{ name: 'bookmarks'}">Bookmarks</router-link>
   </nav>
-  <router-view :articles="articles" :upliftingArticles="upliftingArticles" id="view"></router-view>
+  <router-view :articles="articles" :upliftingArticles="upliftingArticles" :bookmarked="bookmarked" id="view"></router-view>
   <!-- <articles-list :articles="articles"></articles-list> -->
   <!-- <article-detail :article="selectedArticle"></article-detail> -->
   </div>
@@ -21,10 +23,16 @@ export default {
   data(){
     return{
       articles: null,
-      upliftingArticles: null
+      upliftingArticles: null,
+      bookmarked: [],
       // selectedArticle: null
     }
   },
+  computed: {
+    countBookmarked: function(){
+      return this.bookmarked.length
+      }
+    },
   mounted(){
     fetch('https://www.reddit.com/r/unitedkingdom.json')
     .then(response => response.json())
@@ -32,9 +40,9 @@ export default {
     fetch('https://www.reddit.com/r/UpliftingNews.json')
     .then(response => response.json())
     .then(upliftingArticles => this.upliftingArticles = upliftingArticles.data.children)
-    // eventBus.$on('article-selected', (article) => {
-    //   this.selectedArticle = article;
-    // })
+    eventBus.$on('bookmarked-article', (article) => {
+      this.bookmarked.push(article)
+    })
   },
   components: {
     // 'articles-list': ArticlesList,
