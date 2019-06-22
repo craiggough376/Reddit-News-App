@@ -6,7 +6,7 @@
     <router-link :to="{ name: 'uplifting'}">Uplifting News</router-link>
     <router-link :to="{ name: 'bookmarks'}">Bookmarks</router-link>
   </nav>
-  <router-view id="view"></router-view>
+  <router-view :articles="articles" :upliftingArticles="upliftingArticles" id="view"></router-view>
   <!-- <articles-list :articles="articles"></articles-list> -->
   <!-- <article-detail :article="selectedArticle"></article-detail> -->
   </div>
@@ -14,14 +14,14 @@
 
 <script>
 import { eventBus } from './main.js'
-import ArticlesList from './components/ArticlesList.vue'
-import ArticleDetail from './components/ArticleDetail.vue'
+// import ArticleDetail from './components/ArticleDetail.vue'
 
 export default {
   name: 'app',
   data(){
     return{
       articles: null,
+      upliftingArticles: null
       // selectedArticle: null
     }
   },
@@ -29,13 +29,16 @@ export default {
     fetch('https://www.reddit.com/r/unitedkingdom.json')
     .then(response => response.json())
     .then(articles => this.articles = articles.data.children)
+    fetch('https://www.reddit.com/r/UpliftingNews.json')
+    .then(response => response.json())
+    .then(upliftingArticles => this.upliftingArticles = upliftingArticles.data.children)
     // eventBus.$on('article-selected', (article) => {
     //   this.selectedArticle = article;
     // })
   },
   components: {
-    'articles-list': ArticlesList,
-    'article-detail': ArticleDetail
+    // 'articles-list': ArticlesList,
+    // 'article-detail': ArticleDetail
   }
 }
 
