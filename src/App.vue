@@ -1,7 +1,13 @@
 <template>
   <div id="app">
 <h1>Reddit</h1>
-  <articles-list :articles="articles"></articles-list>
+  <nav>
+    <router-link :to="{ name: 'news'}">News</router-link>
+    <router-link :to="{ name: 'uplifting'}">Uplifting News</router-link>
+    <router-link :to="{ name: 'bookmarks'}">Bookmarks</router-link>
+  </nav>
+  <router-view id="view"></router-view>
+  <!-- <articles-list :articles="articles"></articles-list> -->
   <!-- <article-detail :article="selectedArticle"></article-detail> -->
   </div>
 </template>
@@ -16,16 +22,16 @@ export default {
   data(){
     return{
       articles: null,
-      selectedArticle: null
+      // selectedArticle: null
     }
   },
   mounted(){
-    fetch('https://www.reddit.com/r/UpliftingNews.json')
+    fetch('https://www.reddit.com/r/unitedkingdom.json')
     .then(response => response.json())
     .then(articles => this.articles = articles.data.children)
-    eventBus.$on('article-selected', (article) => {
-      this.selectedArticle = article;
-    })
+    // eventBus.$on('article-selected', (article) => {
+    //   this.selectedArticle = article;
+    // })
   },
   components: {
     'articles-list': ArticlesList,
@@ -43,5 +49,11 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+nav {
+  display: flex;
+  justify-content: center;
+  width: 50vw;
+  margin: 0 auto;
 }
 </style>

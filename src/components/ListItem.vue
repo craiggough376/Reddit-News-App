@@ -1,8 +1,9 @@
 <template lang="html">
-  <div class="">
+  <div class="item">
+    <img v-if="article.data.thumbnail !== 'default'" :src="article.data.thumbnail">
     <li v-on:click="handleClick" v-model="article">{{ article.data.title }}</li>
-    <article-detail v-if="this.click === true" :article="article"></article-detail>
     <button>Bookmark</button>
+    <article-detail v-if="this.click === true" :article="article"></article-detail>
   </div>
 </template>
 
@@ -30,10 +31,17 @@ export default {
   components: {
       'article-detail': ArticleDetail
   }
-
 }
 </script>
 
 <style lang="css" scoped>
+.item {
+  list-style: none;
+  border-style: solid;
+ border-width: 5px;
+ padding: 3px;
+}
+
+
 
 </style>
