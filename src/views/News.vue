@@ -1,8 +1,6 @@
 <template lang="html">
   <div>
     <p>Reddit UK News</p>
-
-    <!-- <button v-on:click="sortByUpvotes">Sort by Most Upvoted</button> -->
     <articles-list :articles="articles"></articles-list>
   </div>
 </template>

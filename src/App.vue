@@ -1,13 +1,16 @@
 <template>
   <div id="app">
-<h1>Reddit News API</h1><img src="" alt="">
-<h2 v-if="countBookmarked === 1">You have {{ countBookmarked }} bookmarked article</h2>
-<h2 v-if="countBookmarked > 1">You have {{ countBookmarked }} bookmarked articles</h2>
-  <nav>
-    <li><router-link :to="{ name: 'news'}">News</router-link></li>--
-    <li><router-link :to="{ name: 'uplifting'}">Uplifting News</router-link></li>--
-    <li><router-link :to="{ name: 'bookmarks'}">Bookmarks</router-link></li>
-  </nav>
+    <header class="header">
+      <h1>Reddit News API</h1>
+    <router-link class="link" :to="{ name: 'news'}"><a> UK News</a></router-link>
+    <router-link class="link" :to="{ name: 'uplifting'}">Uplifting News</router-link>
+
+  <h3 class="bookmarked" v-if="countBookmarked === 1">You have {{ countBookmarked }} bookmarked article.
+    <router-link :to="{ name: 'bookmarks'}">Go To Bookmarks</router-link></h3>
+  <h3 class="bookmarked" v-if="countBookmarked > 1">You have {{ countBookmarked }} bookmarked articles.
+    <router-link :to="{ name: 'bookmarks'}">Go To Bookmarks</router-link></h3>
+  </header>
+
   <router-view :articles="articles" :upliftingArticles="upliftingArticles" :bookmarked="bookmarked" id="view"></router-view>
   <!-- <articles-list :articles="articles"></articles-list> -->
   <!-- <article-detail :article="selectedArticle"></article-detail> -->
@@ -57,15 +60,42 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
   list-style: none;
 }
-nav {
+
+
+.header{
   display: flex;
-  justify-content: center;
-  width: 50vw;
-  margin: 0 auto;
+  justify-content: left;
+  align-items:center;
+  background: lightblue;
+  padding:10px;
 }
+
+.link{
+  margin: 10px;
+  text-decoration: none;
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.link:hover{
+  background-color: RoyalBlue;
+}
+
+
+.bookmarked {
+  padding: 8px 20px;
+  display: inline-block;
+  color: red;
+  border-style: solid;
+ border-width: 2px;
+ border-radius: 10px;
+}
+
 </style>

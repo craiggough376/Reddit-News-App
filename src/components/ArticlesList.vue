@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
+    <label for="">Sort By</label>
     <select @change="sortArticles" v-model="selectedInput">
-      <label for="">Sort By...</label>
       <option :value='"score"' >Most Upvoted</option>
       <option :value='"num_comments"' >Most Commented</option>
       <option :value='"created_utc"' >Most Recent</option>

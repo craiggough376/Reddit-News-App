@@ -1,8 +1,11 @@
 <template lang="html">
   <div class="item">
-    <img v-if="article.data.thumbnail !== 'default'" :src="article.data.thumbnail">
-    <li v-on:click="handleClick" v-model="article">{{ article.data.title }}</li>
-    <button v-on:click="bookmark">Bookmark</button>
+    <a class="title">
+      <img  v-if="article.data.thumbnail !== 'default' " :src="article.data.thumbnail">
+      <li>{{ article.data.title }}</li>
+      <button v-on:click="bookmark">Bookmark</button>
+      <button v-on:click="handleClick">Details</button>
+    </a>
     <article-detail v-if="this.click === true" :article="article">
     </article-detail>
   </div>
@@ -16,7 +19,7 @@ export default {
   props: ['article', 'bookmarked'],
   computed: {
     isBookmarked: function(){
-       this.bookmarked.includes(this.article)
+      return this.bookmarked.includes(this.article)
     }
   },
   data(){
@@ -45,11 +48,39 @@ export default {
 
 <style lang="css" scoped>
 .item {
+  text-align: center;
   list-style: none;
   border-style: solid;
  border-width: 2px;
  padding: 10px;
  margin-bottom: 20px;
+}
+
+a.title{
+  display: flex;
+  justify-content: flex-start;
+  align-items:center;
+  display: inline-block;
+  padding:10px;
+}
+
+
+button {
+  background-color: grey;
+  margin: 5px;
+  border: none;
+  color: white;
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 5px;
+
+}
+button:hover {
+  background-color: darkgrey;
+  color: white;
 }
 
 
