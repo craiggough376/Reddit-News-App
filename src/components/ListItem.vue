@@ -4,10 +4,10 @@
       <img  v-if="article.data.thumbnail !== 'default' " :src="article.data.thumbnail">
       <li>{{ article.data.title }}</li>
       <button v-on:click="bookmark">Bookmark</button>
+      <button v-on:click="deleteBookmark">Delete Bookmark</button>
       <button v-on:click="handleClick">Details</button>
     </a>
-    <article-detail v-if="this.click === true" :article="article">
-    </article-detail>
+    <article-detail v-if="this.click === true" :article="article"></article-detail>
   </div>
 </template>
 
@@ -38,6 +38,11 @@ export default {
     },
     bookmark(){
       eventBus.$emit('bookmarked-article', this.article)
+    },
+    deleteBookmark(){
+      const index = this.bookmarked.indexOf(this.article);
+      eventBus.$emit('delete-article', this.index)
+      console.log("bookmarked", this.bookmarked);
     }
   },
   components: {
@@ -48,6 +53,7 @@ export default {
 
 <style lang="css" scoped>
 .item {
+  background-color: white;
   text-align: center;
   list-style: none;
   border-style: solid;

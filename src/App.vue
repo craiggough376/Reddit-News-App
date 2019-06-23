@@ -27,14 +27,20 @@ export default {
     return{
       articles: null,
       upliftingArticles: null,
-      bookmarked: [],
+      bookmarked: []
       // selectedArticle: null
     }
   },
   computed: {
     countBookmarked: function(){
       return this.bookmarked.length
-    }
+    },
+    // articleIndex: function(article){
+    //   return this.bookmarked.indexOf(article);
+    // },
+    // deleteArticle: function(article){
+    //   this.bookmarked.splice(articleIndex(article),1)
+    // }
     },
   mounted(){
     fetch('https://www.reddit.com/r/unitedkingdom.json')
@@ -44,13 +50,14 @@ export default {
     .then(response => response.json())
     .then(upliftingArticles => this.upliftingArticles = upliftingArticles.data.children)
     eventBus.$on('bookmarked-article', (article) => {
-      this.bookmarked.push(article)
-    })
+      this.bookmarked.push(article)})
+    eventBus.$on('delete-article', (index) => {
+      this.bookmarked.splice(index, 1)})
   },
   components: {
     // 'articles-list': ArticlesList,
     // 'article-detail': ArticleDetail
-  }
+  },
 }
 
 </script>
