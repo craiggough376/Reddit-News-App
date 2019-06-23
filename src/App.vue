@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-<h1>Reddit</h1>
+<h1>Reddit News API</h1><img src="" alt="">
 <h2 v-if="countBookmarked === 1">You have {{ countBookmarked }} bookmarked article</h2>
 <h2 v-if="countBookmarked > 1">You have {{ countBookmarked }} bookmarked articles</h2>
   <nav>
-    <router-link :to="{ name: 'news'}">News</router-link>
-    <router-link :to="{ name: 'uplifting'}">Uplifting News</router-link>
-    <router-link :to="{ name: 'bookmarks'}">Bookmarks</router-link>
+    <li><router-link :to="{ name: 'news'}">News</router-link></li>--
+    <li><router-link :to="{ name: 'uplifting'}">Uplifting News</router-link></li>--
+    <li><router-link :to="{ name: 'bookmarks'}">Bookmarks</router-link></li>
   </nav>
   <router-view :articles="articles" :upliftingArticles="upliftingArticles" :bookmarked="bookmarked" id="view"></router-view>
   <!-- <articles-list :articles="articles"></articles-list> -->
@@ -31,7 +31,7 @@ export default {
   computed: {
     countBookmarked: function(){
       return this.bookmarked.length
-      }
+    }
     },
   mounted(){
     fetch('https://www.reddit.com/r/unitedkingdom.json')
@@ -60,6 +60,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  list-style: none;
 }
 nav {
   display: flex;

@@ -1,7 +1,6 @@
 <template lang="html">
   <div>
     <p>Bookmarks</p>
-
   <articles-list :articles="bookmarked"></articles-list>
   </div>
 </template>
@@ -14,7 +13,6 @@ export default {
   props: ['bookmarked'],
   data(){
     return{
-      // count: 0
     }
   },
   components: {

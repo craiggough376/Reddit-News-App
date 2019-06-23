@@ -2,7 +2,6 @@
   <div class="item">
     <img v-if="article.data.thumbnail !== 'default'" :src="article.data.thumbnail">
     <li v-on:click="handleClick" v-model="article">{{ article.data.title }}</li>
-    <h3>Upvotes: {{ article.data.score}}</h3>
     <button v-on:click="bookmark">Bookmark</button>
     <article-detail v-if="this.click === true" :article="article">
     </article-detail>
