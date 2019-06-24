@@ -1,5 +1,6 @@
 <template lang="html">
-  <div>
+  <div class="body">
+    <h2>Uplifting News</h2>
     <articles-list :articles="upliftingArticles"></articles-list>
   </div>
 </template>
@@ -16,7 +17,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
-div {
+.body {
   background-image: url("../assets/rainbows.jpg")
 }
 

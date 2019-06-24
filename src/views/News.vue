@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <p>Reddit UK News</p>
+    <h2>UK News</h2>
     <articles-list :articles="articles"></articles-list>
   </div>
 </template>

@@ -1,7 +1,10 @@
 <template lang="html">
   <div>
-    <p>Bookmarks</p>
-  <articles-list :articles="bookmarked"></articles-list>
+    <!-- <h2>Bookmarks</h2>
+  <articles-list :articles="bookmarked"></articles-list> -->
+  <p>Bookmarks</p>
+  <articles-list :articles="bookmarked" :bookmarked="bookmarked"></articles-list>
+  
   </div>
 </template>
 

@@ -7,7 +7,9 @@
       <option :value='"created_utc"' >Most Recent</option>
     </select>
     <ul>
-      <list-item v-for="article in articles" :article="article">{{ article.data.title }}</list-item>
+      <!-- <list-item v-for="article in articles" :article="article">{{ article.data.title }}</list-item> -->
+      <list-item v-for="(article, index) in articles" :key="index" :index="index" :article="article" :articles="articles" :bookmarked="bookmarked">
+      {{ article.data.title }}</list-item>
     </ul>
   </div>
 </template>
@@ -16,7 +18,7 @@
 import ListItem from './ListItem.vue'
 export default {
   name: "articles-list",
-  props: ['articles'],
+  props: ['articles', 'bookmarked'],
   data(){
     return{
       selectedInput: null

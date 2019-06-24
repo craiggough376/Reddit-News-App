@@ -9,6 +9,7 @@
     <router-link :to="{ name: 'bookmarks'}">Go To Bookmarks</router-link></h3>
   <h3 class="bookmarked" v-if="countBookmarked > 1">You have {{ countBookmarked }} bookmarked articles.
     <router-link :to="{ name: 'bookmarks'}">Go To Bookmarks</router-link></h3>
+
   </header>
 
   <router-view :articles="articles" :upliftingArticles="upliftingArticles" :bookmarked="bookmarked" id="view"></router-view>
@@ -71,10 +72,8 @@ export default {
   list-style: none;
 }
 
-
 .header{
   display: flex;
-  justify-content: left;
   align-items:center;
   background: lightblue;
   padding:10px;

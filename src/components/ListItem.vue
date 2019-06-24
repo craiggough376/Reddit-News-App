@@ -3,8 +3,10 @@
     <a class="title">
       <img  v-if="article.data.thumbnail !== 'default' " :src="article.data.thumbnail">
       <li>{{ article.data.title }}</li>
-      <button v-on:click="bookmark">Bookmark</button>
-      <button v-on:click="deleteBookmark">Delete Bookmark</button>
+
+      <button v-if="!isBookmarked" v-on:click="bookmark" onclick="style='display: none;'">Bookmark</button>
+      <button v-if="isBookmarked" v-on:click="deleteBookmark">Delete Bookmark</button>
+
       <button v-on:click="handleClick">Details</button>
     </a>
     <article-detail v-if="this.click === true" :article="article"></article-detail>
@@ -17,9 +19,15 @@ import ArticleDetail from './ArticleDetail'
 export default {
   name: 'list-item',
   props: ['article', 'bookmarked'],
+  // computed: {
+  //   isBookmarked: function(){
+  //     return this.bookmarked.includes(this.article)
+  //   }
+  // },
   computed: {
     isBookmarked: function(){
-      return this.bookmarked.includes(this.article)
+      if(this.bookmarked){
+      return this.bookmarked.includes(this.article)}
     }
   },
   data(){
@@ -40,8 +48,8 @@ export default {
       eventBus.$emit('bookmarked-article', this.article)
     },
     deleteBookmark(){
-      const index = this.bookmarked.indexOf(this.article);
-      eventBus.$emit('delete-article', this.index)
+      // const index = this.bookmarked.indexOf(this.article);
+      // eventBus.$emit('delete-article', this.index)
       console.log("bookmarked", this.bookmarked);
     }
   },
