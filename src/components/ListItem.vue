@@ -7,9 +7,7 @@
         <button v-if="!isBookmarked" v-on:click="bookmark" onclick="style='display: none;'">Bookmark</button>
         <button v-if="isBookmarked" v-on:click="deleteBookmark">Delete Bookmark</button>
         <button v-on:click="handleClick">Details</button>
-          <p>Upvotes: {{ article.data.score}}</p>
       </div>
-
     </div>
 
     <article-detail v-if="this.click === true" :article="article"></article-detail>
@@ -66,6 +64,7 @@ export default {
   text-align: center;
   list-style: none;
   border-style: solid;
+  border-radius: 14px;
   width: auto;
   font-size: 1.3em;
  border-width: 2px;
@@ -79,6 +78,11 @@ export default {
   justify-content:space-between;
   align-items:center;
   padding:10px;
+}
+
+.buttons{
+  display: flex;
+  justify-content: flex-end;
 }
 
 

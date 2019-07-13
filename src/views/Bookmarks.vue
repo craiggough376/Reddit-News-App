@@ -2,9 +2,9 @@
   <div>
     <!-- <h2>Bookmarks</h2>
   <articles-list :articles="bookmarked"></articles-list> -->
-  <p>Bookmarks</p>
+  <h2>Bookmarks</h2>
   <articles-list :articles="bookmarked" :bookmarked="bookmarked"></articles-list>
-  
+
   </div>
 </template>
 

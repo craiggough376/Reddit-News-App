@@ -31,6 +31,7 @@ export default {
 
 .detail{
   text-align: left;
+  font-size: 14px;
   background-color: lightgrey;
   padding: 10px;
 }

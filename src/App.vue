@@ -1,14 +1,18 @@
 <template>
   <div id="app">
+
     <header class="header">
-      <h1>Reddit News API</h1>
+      
+      <img src="@/assets/reddit-logo.jpg" height="80">
     <router-link class="link" :to="{ name: 'news'}"><a> UK News</a></router-link>
     <router-link class="link" :to="{ name: 'uplifting'}">Uplifting News</router-link>
+    <router-link class="link" :to="{ name: 'bookmarks'}">Bookmarks</router-link>
 
-  <h3 class="bookmarked" v-if="countBookmarked === 1">You have {{ countBookmarked }} bookmarked article.
-    <router-link :to="{ name: 'bookmarks'}">Go To Bookmarks</router-link></h3>
-  <h3 class="bookmarked" v-if="countBookmarked > 1">You have {{ countBookmarked }} bookmarked articles.
-    <router-link :to="{ name: 'bookmarks'}">Go To Bookmarks</router-link></h3>
+    <div class="bookmarked-box">
+      <h3 class="bookmarked" v-if="countBookmarked === 1">You have {{ countBookmarked }} bookmarked article.</h3>
+      <h3 class="bookmarked" v-if="countBookmarked > 1">You have {{ countBookmarked }} bookmarked articles.</h3>
+    </div>
+
 
   </header>
 
@@ -76,7 +80,7 @@ export default {
 .header{
   display: flex;
   align-items:center;
-  background: lightblue;
+  background: #f2f3f5;
   padding:10px;
 }
 
@@ -84,6 +88,7 @@ export default {
   margin: 10px;
   text-decoration: none;
   background-color: DodgerBlue;
+  border-radius: 8px;
   border: none;
   color: white;
   padding: 8px 16px;
@@ -103,6 +108,10 @@ export default {
   border-style: solid;
  border-width: 2px;
  border-radius: 10px;
+}
+
+.bookmarked-box{
+  align-content:
 }
 
 </style>
