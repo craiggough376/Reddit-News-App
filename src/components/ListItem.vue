@@ -1,14 +1,17 @@
 <template lang="html">
   <div class="item">
-    <a class="title">
+    <div class="title-pic">
       <img  v-if="article.data.thumbnail !== 'default' " :src="article.data.thumbnail">
       <li>{{ article.data.title }}</li>
+      <div class="buttons">
+        <button v-if="!isBookmarked" v-on:click="bookmark" onclick="style='display: none;'">Bookmark</button>
+        <button v-if="isBookmarked" v-on:click="deleteBookmark">Delete Bookmark</button>
+        <button v-on:click="handleClick">Details</button>
+          <p>Upvotes: {{ article.data.score}}</p>
+      </div>
 
-      <button v-if="!isBookmarked" v-on:click="bookmark" onclick="style='display: none;'">Bookmark</button>
-      <button v-if="isBookmarked" v-on:click="deleteBookmark">Delete Bookmark</button>
+    </div>
 
-      <button v-on:click="handleClick">Details</button>
-    </a>
     <article-detail v-if="this.click === true" :article="article"></article-detail>
   </div>
 </template>
@@ -49,7 +52,6 @@ export default {
     },
     deleteBookmark(){
       eventBus.$emit('delete-article', this.article)
-      console.log(this.article);
     }
   },
   components: {
@@ -64,16 +66,18 @@ export default {
   text-align: center;
   list-style: none;
   border-style: solid;
+  width: auto;
+  font-size: 1.3em;
  border-width: 2px;
  padding: 10px;
  margin-bottom: 20px;
 }
 
-a.title{
+
+.title-pic{
   display: flex;
-  justify-content: flex-start;
+  justify-content:space-between;
   align-items:center;
-  display: inline-block;
   padding:10px;
 }
 
