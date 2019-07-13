@@ -48,9 +48,8 @@ export default {
       eventBus.$emit('bookmarked-article', this.article)
     },
     deleteBookmark(){
-      // const index = this.bookmarked.indexOf(this.article);
-      // eventBus.$emit('delete-article', this.index)
-      console.log("bookmarked", this.bookmarked);
+      eventBus.$emit('delete-article', this.article)
+      console.log(this.article);
     }
   },
   components: {

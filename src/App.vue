@@ -52,7 +52,8 @@ export default {
     .then(upliftingArticles => this.upliftingArticles = upliftingArticles.data.children)
     eventBus.$on('bookmarked-article', (article) => {
       this.bookmarked.push(article)})
-    eventBus.$on('delete-article', (index) => {
+    eventBus.$on('delete-article', (article) => {
+      let index = this.bookmarked.indexOf(article)
       this.bookmarked.splice(index, 1)})
   },
   components: {
