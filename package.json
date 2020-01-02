@@ -15,5 +15,17 @@
     "@vue/cli-plugin-babel": "^3.8.0",
     "@vue/cli-service": "^3.8.0",
     "vue-template-compiler": "^2.6.10"
-  }
+  },
+  "description": "## Project setup ``` npm install ```",
+  "main": "babel.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/craiggough376/Wk7-H-W-Reddit-App.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/craiggough376/Wk7-H-W-Reddit-App/issues"
+  },
+  "homepage": "https://github.com/craiggough376/Wk7-H-W-Reddit-App#readme"
 }
